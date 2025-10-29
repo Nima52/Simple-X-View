@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -29,7 +31,9 @@ Rails.application.routes.draw do
   delete "/products/:id", to: "products#destroy"
 
   # Resource Routes, for reduced boilerplate of the above CRUD routes
-  resources :products
+  resources :products do
+    resources :subscribers, only: [ :create ]
+  end
 
   # to check all routes for the application can run in console view: bin/rails routes
 
