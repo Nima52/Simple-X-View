@@ -34,10 +34,10 @@ Rails.application.routes.draw do
   resources :products do
     resources :subscribers, only: [ :create ]
   end
+  resource :unsubscribe, only: [ :show ]
 
   # to check all routes for the application can run in console view: bin/rails routes
 
   # Render for root as Products index action
   root "products#index"
-
 end
