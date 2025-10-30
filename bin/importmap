@@ -1,13 +1,5 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "bundler/setup"
-
-# Try the original require, fall back to importmap-rails if needed
-begin
-  require "importmap"
-rescue LoadError
-  require "importmap-rails"
-end
-
-Importmap::CLI.start
+require_relative "../config/application"
+require "importmap/commands"
